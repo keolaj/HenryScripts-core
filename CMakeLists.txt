@@ -6,7 +6,7 @@ cmake_minimum_required (VERSION 3.8)
 project ("HenryScripts-core")
 
 # Add source to this project's executable.
-add_executable (HenryScripts-core "main.cpp")
+add_executable (HenryScripts-core "main.cpp" "src/headers/XInputHandler.h")
 
 if(NOT PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
   # Git auto-ignore out-of-source build directory
