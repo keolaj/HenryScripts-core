@@ -12,9 +12,9 @@ private:
 	XINPUT_STATE _rControllerState{};
 public:
 	XInputHandler();
-	XINPUT_STATE getControllerState();
+	XINPUT_STATE& getControllerState();
 	XINPUT_GAMEPAD getGamepad();
 	void pollController();
 	void updateVControllerState();
-	void updateVControllerStateWithGamepad(XINPUT_GAMEPAD pad);
+	void updateVControllerStateWithGamepad(const XINPUT_GAMEPAD& pad);
 };
