@@ -5,6 +5,9 @@
 
 #include <ViGEm/Client.h>
 
+#pragma comment(lib, "setupapi.lib")
+#pragma comment(lib,"XInput.lib")
+
 class XInputHandler {
 private:
 	const PVIGEM_CLIENT _client;
