@@ -6,7 +6,15 @@
 #include <ViGEm/Client.h>
 
 class XInputHandler {
-	XInputHandler() {
-
-	}
+private:
+	const PVIGEM_CLIENT _client;
+	const PVIGEM_TARGET _controller;
+	XINPUT_STATE _rControllerState{};
+public:
+	XInputHandler();
+	XINPUT_STATE getControllerState();
+	XINPUT_GAMEPAD getGamepad();
+	void pollController();
+	void updateVControllerState();
+	void updateVControllerStateWithGamepad(XINPUT_GAMEPAD pad);
 };

@@ -11,7 +11,7 @@ set(VIGEM_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/ViGEmClient/include)
 set(SOURCES main.cpp ${VIGEM_INCLUDE_DIR}/ViGEm/Client.h)
 
 # Add source to this project's executable.
-add_executable (HenryScripts-core ${SOURCES})
+add_executable (HenryScripts-core ${SOURCES} "src/XInputHandler.cpp")
 target_include_directories(HenryScripts-core PRIVATE ${VIGEM_INCLUDE_DIR})
 
 
