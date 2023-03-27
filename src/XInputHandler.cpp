@@ -9,7 +9,7 @@ XInputHandler::XInputHandler() : _client{ vigem_alloc() }, _controller{ vigem_ta
 	if (!VIGEM_SUCCESS(vigem_target_add(_client, _controller))) {
 		throw std::runtime_error("could not plug in vController");
 	}
-	_rControllerPort = 1; // for this program to work in certain games our virtual controller must be plugged into port 0. Hence why the real controller port is default set to 0.
+	_rControllerPort = 1; // for this program to work in certain games our virtual controller must be plugged into port 0. Hence why the real controller port is default set to 1.
 }
 
 [[nodiscard]] XINPUT_STATE XInputHandler::getControllerState() noexcept {
