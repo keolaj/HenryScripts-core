@@ -13,6 +13,7 @@ private:
 	const PVIGEM_CLIENT _client;
 	const PVIGEM_TARGET _controller;
 	XINPUT_STATE _rControllerState{};
+	static int _rControllerPort;
 public:
 	XInputHandler();
 	~XInputHandler();
@@ -21,4 +22,5 @@ public:
 	void pollController();
 	void updateVControllerState();
 	void updateVControllerStateWithGamepad(const XINPUT_GAMEPAD& pad);
+	void setRControllerPort(int port);
 };

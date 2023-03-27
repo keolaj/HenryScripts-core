@@ -9,6 +9,7 @@ XInputHandler::XInputHandler() : _client{ vigem_alloc() }, _controller{ vigem_ta
 	if (!VIGEM_SUCCESS(vigem_target_add(_client, _controller))) {
 		throw std::runtime_error("could not plug in vController");
 	}
+	_rControllerPort = 1; // for this program to work in certain games our virtual controller must be plugged into port 0. Hence why the real controller port is default set to 0.
 }
 
 [[nodiscard]] XINPUT_STATE XInputHandler::getControllerState() noexcept {
@@ -16,7 +17,7 @@ XInputHandler::XInputHandler() : _client{ vigem_alloc() }, _controller{ vigem_ta
 }
 
 void XInputHandler::pollController() noexcept {
-	XInputGetState(1, &_rControllerState);
+	XInputGetState(_rControllerPort , &_rControllerState);
 }
 
 void XInputHandler::updateVControllerState() noexcept {
@@ -30,6 +31,13 @@ void XInputHandler::updateVControllerState() noexcept {
 
 void XInputHandler::updateVControllerStateWithGamepad(const XINPUT_GAMEPAD& pad) noexcept {
 	vigem_target_x360_update(_client, _controller, *reinterpret_cast<const XUSB_REPORT*>(&pad));
+}
+
+void XInputHandler::setRControllerPort(int port) {
+	if (port > 3 || port < 0) {
+		throw std::runtime_error("port must be between 0 and 3");
+	}
+	_rControllerPort = port;
 }
 
 XInputHandler::~XInputHandler() {
