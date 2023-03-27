@@ -3,7 +3,7 @@
 #include "headers/XInputHandler.h";
 
 XInputHandler::XInputHandler() : _client{ vigem_alloc() }, _controller{ vigem_target_x360_alloc() } {
-	if (!VIGEM_SUCCESS(vigem_connect(_client))) {
+	if (!VIGEM_SUCCESS(vigem_connect(_client)) || _client == nullptr) {
 		throw std::runtime_error("Could not connect to ViGEm driver");
 	}
 	if (!VIGEM_SUCCESS(vigem_target_add(_client, _controller))) {
@@ -30,4 +30,10 @@ XINPUT_GAMEPAD XInputHandler::getGamepad() {
 
 void XInputHandler::updateVControllerStateWithGamepad(const XINPUT_GAMEPAD& pad) {
 	vigem_target_x360_update(_client, _controller, *reinterpret_cast<const XUSB_REPORT*>(&pad));
+}
+
+XInputHandler::~XInputHandler() {
+	vigem_target_free(_controller);
+	vigem_disconnect(_client);
+	vigem_free(_client);
 }
