@@ -16,7 +16,7 @@ private:
 public:
 	XInputHandler();
 	~XInputHandler();
-	XINPUT_STATE& getControllerState();
+	XINPUT_STATE getControllerState();
 	XINPUT_GAMEPAD getGamepad();
 	void pollController();
 	void updateVControllerState();

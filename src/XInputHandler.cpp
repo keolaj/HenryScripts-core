@@ -11,24 +11,24 @@ XInputHandler::XInputHandler() : _client{ vigem_alloc() }, _controller{ vigem_ta
 	}
 }
 
-XINPUT_STATE& XInputHandler::getControllerState() {
+[[nodiscard]] XINPUT_STATE XInputHandler::getControllerState() noexcept {
 	return _rControllerState;
 }
 
-void XInputHandler::pollController() {
+void XInputHandler::pollController() noexcept {
 	XInputGetState(1, &_rControllerState);
 }
 
-void XInputHandler::updateVControllerState() {
+void XInputHandler::updateVControllerState() noexcept {
 	vigem_target_x360_update(_client, _controller, *reinterpret_cast<XUSB_REPORT*>(&_rControllerState.Gamepad));
 }
 
-XINPUT_GAMEPAD XInputHandler::getGamepad() {
+[[nodiscard]] XINPUT_GAMEPAD XInputHandler::getGamepad() noexcept {
 	pollController();
 	return _rControllerState.Gamepad;
 }
 
-void XInputHandler::updateVControllerStateWithGamepad(const XINPUT_GAMEPAD& pad) {
+void XInputHandler::updateVControllerStateWithGamepad(const XINPUT_GAMEPAD& pad) noexcept {
 	vigem_target_x360_update(_client, _controller, *reinterpret_cast<const XUSB_REPORT*>(&pad));
 }
 
