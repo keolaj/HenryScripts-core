@@ -24,9 +24,9 @@ set(SOL2_SINGLE "Enable generation and build of single header files" ON)
 add_subdirectory(sol2)
 
 #luajit (you have to build luajit first. see instructions in readme)
-add_library(LuaJIT SHARED IMPORTED)
+add_library(LuaJIT SHARED IMPORTED )
 set_property(TARGET LuaJIT PROPERTY IMPORTED_LOCATION ${LUAJIT_INCLUDE_DIR}/lua51.dll)
-set_property(TARGET LuaJIT PROPERTY IMPORTED_IMPLIB ${LUAJIT_INCLUDE_DIR}/luajit.lib)
+set_property(TARGET LuaJIT PROPERTY IMPORTED_IMPLIB ${LUAJIT_INCLUDE_DIR}/lua51.lib)
 
 target_include_directories(HenryScripts-core PRIVATE ${VIGEM_INCLUDE_DIR} ${SOL2_INCLUDE_DIR} ${LUAJIT_INCLUDE_DIR})
 target_link_libraries(HenryScripts-core PUBLIC ViGEmClient LuaJIT)
