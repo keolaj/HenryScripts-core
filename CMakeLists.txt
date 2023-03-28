@@ -24,14 +24,17 @@ set(SOL2_SINGLE "Enable generation and build of single header files" ON)
 add_subdirectory(sol2)
 
 #luajit (you have to build luajit first. see instructions in readme)
-add_library(LuaJIT SHARED IMPORTED )
+add_library(LuaJIT SHARED IMPORTED GLOBAL)
 set_property(TARGET LuaJIT PROPERTY IMPORTED_LOCATION ${LUAJIT_INCLUDE_DIR}/lua51.dll)
 set_property(TARGET LuaJIT PROPERTY IMPORTED_IMPLIB ${LUAJIT_INCLUDE_DIR}/lua51.lib)
 
 target_include_directories(HenryScripts-core PRIVATE ${VIGEM_INCLUDE_DIR} ${SOL2_INCLUDE_DIR} ${LUAJIT_INCLUDE_DIR})
 target_link_libraries(HenryScripts-core PUBLIC ViGEmClient LuaJIT)
 
-
+add_custom_command(TARGET HenryScripts-core POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:HenryScripts-core> $<TARGET_FILE_DIR:HenryScripts-core>
+  COMMAND_EXPAND_LISTS
+  )
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET HenryScripts-core PROPERTY CXX_STANDARD 20)
