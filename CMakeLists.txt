@@ -8,14 +8,20 @@ project ("HenryScripts-core")
 # C:\Users\Keola\dev\c++\HenryScripts-core\ViGEmClient\include\ViGEm\Client.h
 
 set(VIGEM_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/ViGEmClient/include)
+set(SOL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/sol2/include/)
 set(SOURCES main.cpp ${VIGEM_INCLUDE_DIR}/ViGEm/Client.h)
 
 # Add source to this project's executable.
 add_executable (HenryScripts-core ${SOURCES} "src/XInputHandler.cpp")
+
 add_subdirectory(ViGEmClient)
 
+set(SOL2_LUA_VERSION "LuaJIT-2.1.0" CACHE STRING "The version of Lua used")
+set(SOL2_SINGLE "Enable generation and build of single header files" ON)
+add_subdirectory(sol2)
 
-target_include_directories(HenryScripts-core PRIVATE ${VIGEM_INCLUDE_DIR})
+
+target_include_directories(HenryScripts-core PRIVATE ${VIGEM_INCLUDE_DIR} ${SOL2_INCLUDE_DIR})
 target_link_libraries(HenryScripts-core PUBLIC ViGEmClient)
 
 

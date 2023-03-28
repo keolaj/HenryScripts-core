@@ -1,6 +1,7 @@
 #include <stdexcept>;
-
 #include "headers/XInputHandler.h";
+
+int XInputHandler::_rControllerPort;
 
 XInputHandler::XInputHandler() : _client{ vigem_alloc() }, _controller{ vigem_target_x360_alloc() } {
 	if (!VIGEM_SUCCESS(vigem_connect(_client)) || _client == nullptr) {

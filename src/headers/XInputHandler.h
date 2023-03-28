@@ -17,10 +17,10 @@ private:
 public:
 	XInputHandler();
 	~XInputHandler();
-	XINPUT_STATE getControllerState();
-	XINPUT_GAMEPAD getGamepad();
-	void pollController();
-	void updateVControllerState();
-	void updateVControllerStateWithGamepad(const XINPUT_GAMEPAD& pad);
+	[[nodiscard]] XINPUT_STATE getControllerState() noexcept;
+	[[nodiscard]] XINPUT_GAMEPAD getGamepad() noexcept;
+	void pollController() noexcept;
+	void updateVControllerState() noexcept;
+	void updateVControllerStateWithGamepad(const XINPUT_GAMEPAD& pad) noexcept;
 	void setRControllerPort(int port);
 };
