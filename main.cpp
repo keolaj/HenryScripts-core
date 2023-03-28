@@ -3,5 +3,5 @@
 #include <sol/sol.hpp>
 
 int main() {
-	
+	sol::state lua{};
 }
