@@ -1,3 +1,6 @@
 [submodule "ViGEmClient"]
 	path = ViGEmClient
 	url = https://github.com/ViGEm/ViGEmClient.git
+[submodule "luajit"]
+	path = luajit
+	url = https://luajit.org/git/luajit.git
