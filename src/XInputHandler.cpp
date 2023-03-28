@@ -18,7 +18,7 @@ XInputHandler::XInputHandler() : _client{ vigem_alloc() }, _controller{ vigem_ta
 }
 
 void XInputHandler::pollController() noexcept {
-	XInputGetState(_rControllerPort , &_rControllerState);
+	XInputGetState(_rControllerPort, &_rControllerState);
 }
 
 void XInputHandler::updateVControllerState() noexcept {

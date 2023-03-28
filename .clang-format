@@ -1,0 +1,27 @@
+---
+BasedOnStyle: WebKit
+BreakBeforeBraces: Attach
+BreakBeforeTernaryOperators: "false"
+BreakInheritanceList: AfterColon
+CompactNamespaces: "false"
+ConstructorInitializerAllOnOneLineOrOnePerLine: "true"
+IndentCaseLabels: "true"
+IndentPPDirectives: BeforeHash
+IndentWidth: "4"
+MaxEmptyLinesToKeep: "1"
+NamespaceIndentation: All
+ReflowComments: "true"
+SpaceAfterLogicalNot: "false"
+SpaceAfterTemplateKeyword: "false"
+SpaceBeforeAssignmentOperators: "true"
+SpaceBeforeCpp11BracedList: "false"
+SpaceBeforeParens: Never
+SpaceInEmptyParentheses: "false"
+SpacesBeforeTrailingComments: "4"
+SpacesInAngles: "false"
+SpacesInCStyleCastParentheses: "false"
+SpacesInContainerLiterals: "false"
+SpacesInParentheses: "false"
+SpacesInSquareBrackets: "false"
+TabWidth: "4"
+UseTab: ForIndentation
