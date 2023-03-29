@@ -10,10 +10,10 @@ project ("HenryScripts-core")
 set(VIGEM_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/ViGEmClient/include)
 set(SOL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/sol2/include)
 set(LUAJIT_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/luajit/src)
-set(SOURCES main.cpp ${VIGEM_INCLUDE_DIR}/ViGEm/Client.h)
+set(SOURCES main.cpp ${VIGEM_INCLUDE_DIR}/ViGEm/Client.h src/XInputHandler.cpp src/SolUtils.cpp)
 
 # Add source to this project's executable.
-add_executable (HenryScripts-core ${SOURCES} "src/XInputHandler.cpp")
+add_executable (HenryScripts-core ${SOURCES} )
 
 # ViGEm
 add_subdirectory(ViGEmClient)
