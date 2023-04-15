@@ -3,8 +3,7 @@
 
 #include <XInput.h>
 
-[[nodiscard]] sol::state SolUtils::createSolState() noexcept {
-	sol::state _lua{};
+void SolUtils::setupSolState(sol::state& _lua) noexcept {
 
 	_lua.open_libraries(sol::lib::base, sol::lib::jit, sol::lib::math, sol::lib::string, sol::lib::bit32);
 
@@ -17,6 +16,4 @@
 	gamepadUDT["sThumbLY"] = &XINPUT_GAMEPAD::sThumbLY;
 	gamepadUDT["sThumbRX"] = &XINPUT_GAMEPAD::sThumbRX;
 	gamepadUDT["sThumbRY"] = &XINPUT_GAMEPAD::sThumbRY;
-
-	return _lua;
 }

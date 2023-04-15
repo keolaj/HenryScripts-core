@@ -6,9 +6,12 @@
 #include "src/headers/SolUtils.h";
 #include "src/headers/XInputHandler.h";
 
+
+
 int main() {
 
-	sol::state lua{ SolUtils::createSolState() };
+	sol::state lua{};
 
-	lua.script("print(\"hello\")");
+	SolUtils::setupSolState(lua);
+	
 }

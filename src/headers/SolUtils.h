@@ -1,5 +1,5 @@
 #include <sol/sol.hpp>
 
 namespace SolUtils {
-	[[nodiscard]] sol::state createSolState() noexcept;
+	void setupSolState(sol::state& _lua) noexcept;
 }
